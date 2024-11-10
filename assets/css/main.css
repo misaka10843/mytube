@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --themeColor: #f67d8f;
+    --themeColorLight: #ffc0cb;
+    --themeColorDark: #a8616e;
+
+    --mp-primary-color:var(--themeColor);
+}
+body{
+    margin: 0;
+    background-color: #f3f4f6;
+}
+.mfuns-player-footbar {
+    padding-top: 0.5rem /* 8px */;
+    padding-bottom: 0.5rem /* 8px */;
+    height: 32px;
+}
+
+.mfuns-player-danmakubar-input-wrap {
+    background-color: #fff !important;
+}
+
+.mfuns-player-button-widescreen {
+    display: none !important;
+}
