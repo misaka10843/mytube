@@ -82,6 +82,7 @@ export function VideoPlayer(videoParams) {
             },
             danmakuRecall: async () => {
                 console.log("撤回成功");
+                useNuxtApp().$toast("撤回成功！",{"type": "success"})
                 return {
                     success: true,
                     message: "撤回成功",
@@ -89,6 +90,7 @@ export function VideoPlayer(videoParams) {
             },
             danmakuReport: async () => {
                 console.log("举报成功");
+                useNuxtApp().$toast("举报成功！",{"type": "success"})
                 return {
                     success: true,
                     message: "举报成功",
@@ -96,6 +98,7 @@ export function VideoPlayer(videoParams) {
             },
             danmakuBlockUser: async () => {
                 console.log("屏蔽成功");
+                useNuxtApp().$toast("屏蔽成功！",{"type": "success"})
                 return {
                     success: true,
                     message: "屏蔽成功",

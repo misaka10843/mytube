@@ -41,7 +41,7 @@ const videoParams = {
   thumbnails: '',//缩略图(选传)
   danmaku: [  // 附加弹幕文件
     {
-      url: '/danmuku/av314.xml',
+      url: '/danmuku/av314big.xml',
       type: 'bilibili-xml',
       origin: 'bilibili',
     }
@@ -50,7 +50,7 @@ const videoParams = {
 
 //console.log(props.params);
 onMounted(() => {
-  useNuxtApp().$toast("就是這麼簡單！")
+
   VideoPlayer(videoParams)
 
 });

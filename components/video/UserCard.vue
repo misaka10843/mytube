@@ -6,7 +6,7 @@
       <div
           class="flex flex-row flex-nowrap gap-[12px] ml-[-6px] mr-[-6px] items-center justify-start mb-[6px] mt-[6px]">
         <div class="ml-[6px] mr-[6px] flex-shrink-0 relative">
-          <img src="https://resource.mfuns.net/image/placeholder/img-404.png"
+          <img src="/img/avatar/Akkarin.jpg"
                class="rounded-full cursor-pointer bg-[var(--color-gray-200)] h-inherit object-cover w-full inline-block max-w-full"
                style="height: 62px; width: 62px;" alt="">
         </div>
