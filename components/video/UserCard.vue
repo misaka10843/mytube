@@ -1,4 +1,18 @@
 <script setup lang="ts">
+import {ref} from 'vue';
+import {useNuxtApp} from '#app';
+
+const followed = ref(false); // 初始状态为未关注
+const nuxtApp = useNuxtApp();
+const toggleFollow = () => {
+  followed.value = !followed.value; // 切换关注状态
+
+  if (followed.value) {
+    nuxtApp.$toast('关注成功', {type: 'success'});
+  } else {
+    nuxtApp.$toast('已取消关注', {type: 'success'});
+  }
+};
 </script>
 <template>
   <div id="user-card" style="padding: 12px 16px;">
@@ -29,9 +43,15 @@
       </div>
       <div class="flex mb-[6px] mt-[6px] ml-[-6px] mr-[-6px] items-stretch justify-start flex-nowrap flex-row">
         <button
-            class="ml-[6px] mr-[6px] bg-[var(--themeColorLight)] border-0 rounded-[4px] text-white cursor-pointer h-[34px] m-0 outline-none p-0 w-[86px] font-inherit"
-            style="flex: 1 1 0;">
-          关注
+            class="ml-[6px] mr-[6px] border-0 rounded-[4px] cursor-pointer h-[34px] m-0 outline-none p-0 w-[86px] font-inherit"
+            style="flex: 1 1 0;"
+            @click="toggleFollow"
+            :class="{
+               'follow': !followed,
+               'followed': followed
+             }"
+        >
+          {{ followed ? '已关注' : '关注' }}
         </button>
         <button
             class="ml-[6px] mr-[6px] bg-white border border-[var(--themeColorLight)] rounded-[4px] text-[var(--themeColorLight)] cursor-pointer h-[34px] m-0 outline-none p-0 w-[86px] font-inherit"
@@ -43,4 +63,13 @@
   </div>
 </template>
 <style scoped>
+.followed {
+  background-color: #f4f5f5;
+  color: #777c82;
+}
+
+.follow {
+  background-color: var(--themeColorLight);
+  color: #fff;
+}
 </style>
