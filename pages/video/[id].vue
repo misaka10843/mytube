@@ -63,7 +63,18 @@ onMounted(() => {
         </div>
         <div id="mfunsPlayer-video-danmaku-list" class="h-[300px]"></div>
       </div>
-
+      <div class="bg-white rounded-lg">
+        <h2 class="font-medium text-[18px] mb-4 break-words">推荐视频</h2>
+        <div>
+          <figure class="flex mb-[16px] w-full">
+            <span
+                class="text-inherit h-[78.75px] mr-[8px] relative w-[140px] block text-black cursor-pointer no-underline">
+              <img class="rounded-[8px] object-cover bg-[var(--color-gray-200)] h-inherit w-full inline-block max-w-full" src="https://cdn2.mfuns.net/static/4e0432c199ae022055bc08cc0ffaa6fc3f38ddf6f144ce6818ea920183d8f59d.jpg" alt="">
+            <div class="text-white text-[12px] leading-[12px] p-[4px] absolute bg-[rgba(0,0,0,0.5)] rounded-[4px] bottom-[4px] box-border right-[4px] text-center z-[1]"></div>
+            </span>
+          </figure>
+        </div>
+      </div>
     </div>
 
   </div>
