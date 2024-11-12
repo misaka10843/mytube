@@ -9,6 +9,15 @@
     --mp-primary-color: var(--themeColor);
 }
 
+/*进度条颜色*/
+#nprogress .bar {
+    height: 4px !important; /* 设置进度条的高度 */
+    background-color: var(--themeColor) !important;
+}
+#nprogress .peg {
+    box-shadow: 0 0 10px var(--themeColorLight), 0 0 5px var(--themeColorLight) !important;
+
+}
 * {
     font-family: Inter, SF Pro, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue, Helvetica, Arial, sans-serif;
     margin: 0;

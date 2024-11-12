@@ -12,7 +12,7 @@ export default defineNuxtConfig({
             }],
         },
     },
-    plugins: ['~/plugins/vue3-toastify.js'],
+    plugins: ['~/plugins/vue3-toastify.client.js', '~/plugins/nprogress.client.js'],
     ssr: false,
     postcss: {
         plugins: {

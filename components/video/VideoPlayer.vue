@@ -41,7 +41,7 @@ const videoParams = {
   thumbnails: '',//缩略图(选传)
   danmaku: [  // 附加弹幕文件
     {
-      url: '/danmuku/av314big.xml',
+      url: '/danmuku/av314lite.xml',
       type: 'bilibili-xml',
       origin: 'bilibili',
     }
