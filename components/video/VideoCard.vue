@@ -11,15 +11,6 @@ const props = defineProps({
   data: {
     type: Object,
     required: true,
-    default: () => ({
-      "title": "正在加载中",
-      "description": "正在加载中",
-      "time": "正在加载中",
-      "category": "正在加载中",
-      "play_count": 0,
-      "favorites": 0,
-      "likes": 0,
-    }),
   },
 });
 const formattedText = computed(() => {

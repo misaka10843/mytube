@@ -4,6 +4,12 @@ import {useNuxtApp} from '#app';
 
 const followed = ref(false); // 初始状态为未关注
 const nuxtApp = useNuxtApp();
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+  },
+});
 const toggleFollow = () => {
   followed.value = !followed.value; // 切换关注状态
 
@@ -24,19 +30,19 @@ const toggleFollow = () => {
                class="rounded-full cursor-pointer bg-[var(--color-gray-200)] h-inherit object-cover w-full inline-block max-w-full"
                style="height: 62px; width: 62px;" alt="">
         </div>
-        <a href="/member/66" class="ml-[6px] mr-[6px] h-full text-[var(--text)] cursor-pointer no-underline"
+        <a href="" class="ml-[6px] mr-[6px] h-full text-[var(--text)] cursor-pointer no-underline"
            style="font-size: inherit; color: var(--themeColor);">
           <div class="mb-[-2px] mt-[-2px] items-stretch justify-around flex-nowrap flex-col flex">
             <div class="mb-[2px] mt-[2px] ml-[-2px] mr-[-2px] items-center justify-start flex-nowrap flex-row">
 							<span class="ml-[2px] mr-[2px] text-[16px]">
-								misaka10843
+								{{ props.data.name }}
 							</span>
             </div>
             <span class="mb-[2px] mt-[2px] text-[#757f87] text-[14px] font-normal">
-							这个人什么都没有写哦~
+							{{ props.data.signature }}
 						</span>
             <span class="mb-[2px] mt-[2px] text-[#757f87] text-[14px] font-normal">
-							粉丝数：10843
+							粉丝数：{{ props.data.followers }}
 						</span>
           </div>
         </a>

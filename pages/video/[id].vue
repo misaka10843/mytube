@@ -50,7 +50,7 @@ onMounted(() => {
         <div id="playerContainer" class="" ref="playerContainer"></div>
       </div>
       <div class="rounded-lg bg-white mb-3" style="padding: 12px 16px;">
-        <VideoCard v-if="video" :data="video" />
+        <VideoCard v-if="video.bv" :data="video" />
       </div>
       <div class="rounded-lg bg-white mb-3" style="padding: 12px 16px;">
         <div class="!p-0 mb-3">
@@ -67,7 +67,7 @@ onMounted(() => {
     </div>
     <div class="flex flex-col w-full 2xl:w-[28%] md:w-5/12 mt-4 md:mt-0 px-4">
       <div class="w-full rounded-lg mb-3 bg-white">
-        <UserCard/>
+        <UserCard v-if="video.bv" :data="video"/>
       </div>
       <div class="h-[345px] bg-white rounded-lg mb-3">
         <div class="items-center border-b border-[#ebebeb] flex justify-between p-[10px_16px] w-full">
