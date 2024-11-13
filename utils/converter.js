@@ -13,7 +13,8 @@ export function secondsToTimeString(seconds) {
 export function formatNumber(num) {
     if (num >= 10000) {
         return (num / 10000).toFixed(1) + '万';
-    } else {
-        return num.toFixed(1);
     }
+}
+export function formatTextToParagraphs(text) {
+    return text.split('\n').map(line => `<p>${line}</p>`).join('');
 }

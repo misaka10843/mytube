@@ -17,31 +17,35 @@ useHead({
   ]
 })
 
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+  },
+});
+console.log(props.data);
 const videoParams = {
-  url:'https://jx.91vrchat.com/bl/?url=BV1cg411Z7n3',
-  pic: '', //视频预览图链接地址（不传默认为视频第1帧）
-  //qualities: [
-  //  {
-  //    url: "https://jx.91vrchat.com/bl/?url=BV1xx411c7XW?tag=1080P",
-  //    type: "mp4",
-  //    quality: "1080P",
-  //    label: "1080P 高清",
-  //  },
-  //  {
-  //    url: "https://jx.91vrchat.com/bl/?url=BV1xx411c7XW?tag=720P",
-  //    type: "mp4",
-  //    quality: "720P",
-  //    label: "720P 高清",
-  //  },
-  //],
+  //url:`https://jx.91vrchat.com/bl/?url=${props.data.bv}`,
+  pic: `/img/cover/${props.data.bv}.jpg`, //视频预览图链接地址（不传默认为视频第1帧）
+  qualities: [
+    {
+      url: `https://jx.91vrchat.com/bl/?url=${props.data.bv}?tag=1080P`,
+      type: "mp4",
+      quality: "1080P",
+      label: "1080P 高清",
+    },
+    {
+      url: `https://jx.91vrchat.com/bl/?url=${props.data.bv}?tag=720P`,
+      type: "mp4",
+      quality: "720P",
+      label: "720P 高清",
+    },
+  ],
   type: 'mp4', //视频类型
-  title: '', //视频标题（必传）
-  danId: 100, //弹幕id(选传)
-  advDanId: 12,//高级弹幕id(选传)
-  thumbnails: '',//缩略图(选传)
+  title: props.data.title, //视频标题（必传）
   danmaku: [  // 附加弹幕文件
     {
-      url: '/danmuku/av314lite.xml',
+      url: `/danmuku/${props.data.bv}.xml`,
       type: 'bilibili-xml',
       origin: 'bilibili',
     }

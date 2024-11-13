@@ -1,9 +1,13 @@
 <script setup lang="ts">
-
 import UserCard from "~/components/video/UserCard.vue";
 import RecommendVideo from "~/components/video/RecommendVideo.vue";
 import VideoCard from "~/components/video/VideoCard.vue";
-// 获取 .player 容器的引用
+import api from "~/utils/api";
+import {useNuxtApp} from "#app";
+
+const route = useRoute()
+
+//设置播放器高度，防止4：3画幅导致播放器变形
 const playerContainer = ref(null);
 
 const setPlayerHeight = () => {
@@ -13,7 +17,20 @@ const setPlayerHeight = () => {
     playerContainer.value.style.height = `${height}px`;
   }
 };
+
+//获取视频信息
+const video = ref([]);
+const fetchVideo = async () => {
+  try {
+    const {data} = await api.getVideo(route.params.id);
+    video.value = data;
+  } catch (error) {
+    useNuxtApp().$toast('视频获取失败:' + error, {type: 'error'});
+  }
+};
+
 onMounted(() => {
+  fetchVideo();
   setPlayerHeight();
   // 监听窗口大小变化
   window.addEventListener('resize', setPlayerHeight);
@@ -22,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <VideoPlayer/>
+  <VideoPlayer v-if="video.bv" :data="video"/>
   <div class="relative flex flex-col md:flex-row md:justify-between mx-auto w-6/6 lg:w-5/6 top-8">
     <div class="w-full md:w-5/6 bg-opacity-75 px-4 md:px-0">
       <div id="mfunsPlayer" class="rounded-lg bg-white overflow-hidden mb-3">
@@ -33,7 +50,7 @@ onMounted(() => {
         <div id="playerContainer" class="" ref="playerContainer"></div>
       </div>
       <div class="rounded-lg bg-white mb-3" style="padding: 12px 16px;">
-        <VideoCard/>
+        <VideoCard v-if="video" :data="video" />
       </div>
       <div class="rounded-lg bg-white mb-3" style="padding: 12px 16px;">
         <div class="!p-0 mb-3">

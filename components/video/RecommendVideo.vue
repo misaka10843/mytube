@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import api from '~/utils/api';
 import {useNuxtApp} from "#app";
-import {formatNumber,secondsToTimeString} from "~/utils/number-converter";
+import {formatNumber,secondsToTimeString} from "~/utils/converter";
 
 const videos = ref([]);
 

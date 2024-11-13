@@ -1,4 +1,3 @@
-// utils/api.js
 import axios from 'axios';
 
 const apiClient = axios.create({
@@ -12,7 +11,7 @@ const apiClient = axios.create({
 
 export default {
     getVideoList(count, category, random) {
-        const params = { count: count || 10, category, random: random === 'true' };
+        const params = { count: count || 10, category, random: random || 'true' };
         return apiClient.get('/video/list', { params });
     },
 

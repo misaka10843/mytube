@@ -1,44 +1,81 @@
 <script setup lang="ts">
+import {formatNumber, formatTextToParagraphs} from "~/utils/converter";
+
 const isExpanded = ref(false);
+const contentRef = ref(null);
+
 const toggle = () => {
   isExpanded.value = !isExpanded.value;
 };
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+    default: () => ({
+      "title": "正在加载中",
+      "description": "正在加载中",
+      "time": "正在加载中",
+      "category": "正在加载中",
+      "play_count": 0,
+      "favorites": 0,
+      "likes": 0,
+    }),
+  },
+});
+const formattedText = computed(() => {
+  if (props.data && props.data.description) {
+    return formatTextToParagraphs(props.data.description);
+  }
+  return '';
+});
+
+const pTagCount = ref(0);
+
+const updatePTagCount = () => {
+  if (contentRef.value) {
+    const pTags = contentRef.value.querySelectorAll('p');
+    pTagCount.value = pTags.length;
+  }
+};
+
+onMounted(() => {
+  updatePTagCount();
+});
+
+watch(formattedText, () => {
+  updatePTagCount();
+});
 </script>
 
 <template>
   <h1 class="text-[22px] overflow-hidden text-ellipsis line-clamp-2 mb-[15px] break-words">
-    电磁炮真是太可爱了
+    {{ props.data.title }}
   </h1>
   <div class="text-[#9ca3af] flex flex-wrap my-[12px]">
     <div class="items-center cursor-default flex mr-[16px]">
-      <a href="/member/16514" class="link">misaka10843</a>
+      <a href="" class="link">{{ props.data.name }}</a>
     </div>
     <div class="items-center cursor-default flex mr-[16px]">
       <div class="mr-1">
-        <a href="" class="text-inherit inline !text-[#9ca3af] cursor-pointer no-underline">鬼畜</a>
+        <a href="" class="text-inherit inline !text-[#9ca3af] cursor-pointer no-underline">{{ props.data.category }}</a>
       </div>
     </div>
-    <time class="items-center cursor-default flex mr-[16px]">2024-11-11 20:03</time>
+    <time class="items-center cursor-default flex mr-[16px]">{{ props.data.time }}</time>
     <span class="items-center cursor-default flex mr-[16px]">
             <i class="fa-regular fa-eye mr-1"></i>
-            <span>111222</span>
+            <span>{{ formatNumber(props.data.play_count) }}</span>
           </span>
   </div>
   <div
       class="line-clamp-3 overflow-hidden text-ellipsis whitespace-pre-wrap break-words"
       :class="{ block: isExpanded }"
       ref="contentRef"
+      v-html="formattedText"
   >
-    <!-- 这里是您的内容 -->
-    <p>123</p>
-    <p>123</p>
-    <p>123</p>
-    <p>123</p>
-    <p>123</p>
-    <p>123</p>
-    <!-- 更多内容 -->
   </div>
-  <span class="cursor-pointer text-[var(--themeColor)]" @click="toggle">{{ isExpanded ? '收起' : '展开' }}</span>
+  <span class="cursor-pointer text-[var(--themeColor)]" v-if="pTagCount>3" @click="toggle">{{
+      isExpanded ? '收起' : '展开'
+    }}</span>
 </template>
 
 <style scoped>
