@@ -18,7 +18,7 @@ useHead({
 })
 
 const videoParams = {
-  url:'/video/av314.mp4',
+  url:'https://jx.91vrchat.com/bl/?url=BV1cg411Z7n3',
   pic: '', //视频预览图链接地址（不传默认为视频第1帧）
   //qualities: [
   //  {

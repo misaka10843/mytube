@@ -1,13 +1,8 @@
 <script setup lang="ts">
-/* Todo
-评论API：https://api.bilibili.com/x/v2/reply?type=1&oid=<av号>
 
-
-
-
- */
 import UserCard from "~/components/video/UserCard.vue";
 import RecommendVideo from "~/components/video/RecommendVideo.vue";
+import VideoCard from "~/components/video/VideoCard.vue";
 // 获取 .player 容器的引用
 const playerContainer = ref(null);
 
@@ -38,16 +33,16 @@ onMounted(() => {
         <div id="playerContainer" class="" ref="playerContainer"></div>
       </div>
       <div class="rounded-lg bg-white mb-3" style="padding: 12px 16px;">
-        <h1 class="text-[22px] overflow-hidden text-ellipsis line-clamp-2 mb-[15px] break-words">
-          电磁炮真是太可爱了
-        </h1>
-        <div class="text-[#9ca3af] flex flex-wrap my-[12px]">
-          <div class="items-center cursor-default flex mr-[16px]">
-            <a href="/member/16514" class="link">misaka10843</a>
-          </div>
-          <div class="items-center cursor-default flex mr-[16px]">
-            <div class="mr-1">
-              <a href="" class="text-inherit inline !text-[#9ca3af] cursor-pointer no-underline">鬼畜</a>
+        <VideoCard/>
+      </div>
+      <div class="rounded-lg bg-white mb-3" style="padding: 12px 16px;">
+        <div class="!p-0 mb-3">
+          <div class="px-[22px]">
+            <div class="items-center text-[#111827] flex text-[18px] font-bold justify-between leading-[50px] w-full">
+              <div>全部评论(0)</div>
+            </div>
+            <div class="items-center text-[#9ca3af] flex h-[84px] justify-center">
+              <span>没有更多了</span>
             </div>
           </div>
         </div>
