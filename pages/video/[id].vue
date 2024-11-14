@@ -43,11 +43,7 @@ onMounted(() => {
   <div class="relative flex flex-col md:flex-row md:justify-between mx-auto w-6/6 lg:w-5/6 top-8">
     <div class="w-full md:w-5/6 bg-opacity-75 px-4 md:px-0">
       <div id="mfunsPlayer" class="rounded-lg bg-white overflow-hidden mb-3">
-        {{ $route.params.id }}
-        <nuxt-link to="/video/1">1</nuxt-link>
-        <nuxt-link to="/video/2">2</nuxt-link>
-        <nuxt-link to="/video/3">3</nuxt-link>
-        <div id="playerContainer" class="" ref="playerContainer"></div>
+        <div id="playerContainer" ref="playerContainer"></div>
       </div>
       <div class="rounded-lg bg-white mb-3" style="padding: 12px 16px;">
         <VideoCard v-if="video.bv" :data="video" />

@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import api from '~/utils/api';
 import {useNuxtApp} from "#app";
-import {formatNumber,secondsToTimeString} from "~/utils/converter";
+import {formatNumber, secondsToTimeString} from "~/utils/converter";
 
 const videos = ref([]);
 
+const props = defineProps({
+  count: {
+    type: Number,
+    default: 5,
+  },
+  random: {
+    type: Boolean,
+    default: true,
+  }
+});
+
 const fetchVideoList = async () => {
   try {
-    const {data} = await api.getVideoList(5, '', true);
+    const {data} = await api.getVideoList(props.count, '', props.random);
     videos.value = data;
   } catch (error) {
     useNuxtApp().$toast('视频列表获取失败:' + error, {type: 'error'});
@@ -23,7 +34,7 @@ onMounted(() => {
     <div class="flex flex-col gap-[12px]">
       <figure v-for="video in videos" class="w-full flex mb-[16px]">
         <nuxt-link :to="{ name: 'video-id', params: { id: video.bv } }"
-          class="text-inherit h-[78.75px] mr-[8px] relative w-[140px] block text-black cursor-pointer no-underline">
+                   class="text-inherit h-[78.75px] mr-[8px] relative w-[140px] block text-black cursor-pointer no-underline">
           <img class="h-[78.75px] rounded-[8px] object-cover bg-[#e5e7eb] h-inherit w-full"
                :src="'/img/cover/'+video.bv+'.jpg'"
                alt=""/>
@@ -33,7 +44,8 @@ onMounted(() => {
           </div>
         </nuxt-link>
         <figcaption class="flex flex-1 flex-col h-[78.75px] ml-[8px] p-[1px_0] w-0">
-          <nuxt-link class="text-inherit !text-[#9ca3af] cursor-pointer no-underline mb-auto" :to="{ name: 'video-id', params: { id: video.bv } }">
+          <nuxt-link class="text-inherit !text-[#9ca3af] cursor-pointer no-underline mb-auto"
+                     :to="{ name: 'video-id', params: { id: video.bv } }">
             <h3 class="line-clamp-2 text-[14px] !important leading-[1.2] mb-0 overflow-hidden text-ellipsis text-[#000000de] font-normal">
               {{ video.title }}
             </h3>
