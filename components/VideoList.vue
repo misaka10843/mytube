@@ -10,12 +10,17 @@ const props = defineProps({
   category: {
     type: String,
     required: true,
+  },
+  count: {
+    type: Number,
+    required: true,
+    default: 8,
   }
 });
 const videos = ref([]);
 const fetchVideoList = async () => {
   try {
-    const {data} = await api.getVideoList(8, props.category ?? '', false);
+    const {data} = await api.getVideoList(props.count, props.category ?? '', false);
     videos.value = data;
   } catch (error) {
     useNuxtApp().$toast('视频列表获取失败:' + error, {type: 'error'});
