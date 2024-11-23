@@ -10,13 +10,13 @@ import RecommendVideo from "~/components/video/RecommendVideo.vue";
   <div class=" flex flex-row flex-wrap ml-[calc(1.5rem * -0.5)] mr-[calc(1.5rem * -0.5)] relative">
     
     <div class="w-full md:w-[75%] px-3">
-      <VideoList title="最新生活视频" category="生活"/>
-      <VideoList title="最新鬼畜视频" category="鬼畜"/>
-      <VideoList title="最新美食视频" category="美食"/>
-      <VideoList title="最新科技视频" category="科技"/>
-      <VideoList title="最新游戏视频" category="游戏"/>
-      <VideoList title="最新动画视频" category="动画"/>
-      <VideoList title="最新Vtuber视频" category="Vtuber"/>
+
+
+      <VideoList title="最新视频" category="生活"/>
+
+      <VideoList title="科技视频" category="科技"/>
+
+
     </div>
 
 
