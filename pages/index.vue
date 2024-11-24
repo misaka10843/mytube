@@ -36,3 +36,6 @@ import RecommendVideo from "~/components/video/RecommendVideo.vue";
 <style scoped>
 
 </style>
+
+<script></script>
+
